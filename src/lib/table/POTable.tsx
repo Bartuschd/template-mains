@@ -52,6 +52,7 @@ function POTable({columns, items}){
                 handleEditClick={handleEditClick} 
                 searchTerm={searchTerm} 
                 handleInputChange={handleInputChange} 
+                setCurrentData={setCurrentData}
             />
             <Table arial-label="PO Table" id={"table"}>
                 <TableHeader className="TableHeader">

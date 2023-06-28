@@ -17,8 +17,7 @@ const NewEntryDialog = ({open, setIsOpen, values}) => {
         alert("form submitted!");
     };
 
-    console.log(values.id);
-
+    
     const styles = useStyles();
 
     return (
@@ -34,7 +33,7 @@ const NewEntryDialog = ({open, setIsOpen, values}) => {
                                 <Label required htmlFor={"id-input"}>
                                     ID
                                 </Label>
-                                <Input required type="number" id={"id-input"} defaultValue={values.id}/>
+                                <Input disabled={true} id={"id-input"} defaultValue={values.id}/>
 
                                 <Label required htmlFor={"supplier_id-input"}>
                                     Supplier ID
