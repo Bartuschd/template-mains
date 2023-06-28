@@ -1,0 +1,81 @@
+{
+  "name": "@cbh/POPlanning",
+  "version": "0.0.1",
+  "description": "A Table to look into and change PO Plandates",
+  "author": "Daniel Bartusch",
+  "keywords": [],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/component.umd.js",
+  "module": "./dist/component.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/component.es.js",
+      "require": "./dist/component.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "dev-build": "vite build --watch --mode development"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.21.0",
+    "prop-types": "^15.8.1",
+    "rollup-plugin-styles": "^4.0.0",
+    "sass": "^1.57.1",
+    "vite-plugin-css-injected-by-js": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.52",
+    "@types/react-dom": "^17.0.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "@vitejs/plugin-react": "^1.0.7",
+    "eslint": "^8.31.0",
+    "eslint-plugin-react": "^7.28.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^8.0.5",
+    "typescript": "^4.9.4",
+    "vite": "^3.2.7"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es2020": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "rules": {
+      "react/jsx-key": "off",
+      "@typescript-eslint/ban-ts-comment": "off"
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "root": true
+  }
+}
