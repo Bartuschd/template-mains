@@ -21,8 +21,38 @@ function POTable({columns, items}){
     const [isEditing, setIsEditing] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentData, setCurrentData] = useState({});
+    const [changedData, setChangedData] = useState([]);
 
     
+    const pushToArray = (obj) => {
+        const output = changedData;
+
+        if(output.findIndex(element => element.id === obj.id && element.key === obj.key) != -1) {
+            output[output.findIndex(element => element.id === obj.id && element.key === obj.key)].value = obj.value
+        }
+        else{
+            output.push(obj);
+        }
+
+        setChangedData(output);
+        
+        console.log(mergeArray(output));
+    }
+
+    const mergeArray = (output) => {
+        const mergedObjects = {}; //Leeres objekt mit Merged Objects wird erstellt
+
+        output.forEach(item => {    //Foreach abfrage für jedes item/objekt in dem array)
+          const { id, key, value } = item; // die id, key und value werden destruktiv
+      
+          if (!mergedObjects[id]) {
+            mergedObjects[id] = { id };
+          }
+      
+          mergedObjects[id][key] = value;
+        });
+        return Object.values(mergedObjects);
+      }
 
 
     const handleSaveClick = () => {
@@ -69,7 +99,7 @@ function POTable({columns, items}){
                         <TableRow onDoubleClick={() => {setIsOpen(true); setCurrentData(item);} } key={item.id}>
                             {columns.map((column) => (
                                 <TableCell onClick={() => { column.columnKey === "id" && setIsOpen(true); column.columnKey === "id" && setCurrentData(item);}} key={column.columnKey} className={column.columnKey}>
-                                    <DisplayValue valueKey={column.columnKey} value={item[column.columnKey]} isEditing={isEditing}/>
+                                    <DisplayValue valueKey={column.columnKey} value={item[column.columnKey]} isEditing={isEditing} itemId={item.id} pushToArray={pushToArray} setChangedData={setChangedData}/>
                                 </TableCell>
                             ))}
                         </TableRow>
