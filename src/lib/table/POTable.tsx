@@ -8,8 +8,11 @@ import {
     TableHeaderCell,
 } from "@fluentui/react-components";
 import './POTable.scss';
+import PropTypes from 'prop-types';
+import * as React from 'react';
 import DisplayValue from './components/DisplayValue';
 import HeaderMenu from './components/HeaderMenu';
+import NewEntryDialog from './components/NewEntryDialog';
 
 
 function POTable({columns, items}){
@@ -17,6 +20,7 @@ function POTable({columns, items}){
     const [isOpen, setIsOpen] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const [currentData, setCurrentData] = useState({});
 
     
 
@@ -40,6 +44,7 @@ function POTable({columns, items}){
     });
     return (
         <div className="POPlanningApp">
+            <NewEntryDialog setIsOpen={setIsOpen} open={isOpen} values={currentData}/>
             <HeaderMenu 
                 setIsOpen={setIsOpen} 
                 isEditing={isEditing} 
@@ -60,10 +65,10 @@ function POTable({columns, items}){
                 </TableHeader>
                 <TableBody>
                     {(searchTerm ? filteredData : items).map((item) => (
-                        <TableRow onDoubleClick={() => setIsOpen(true)} key={item.id}>
+                        <TableRow onDoubleClick={() => {setIsOpen(true); setCurrentData(item);} } key={item.id}>
                             {columns.map((column) => (
-                                <TableCell onClick={() => column.columnKey === "id" && setIsOpen(true)} key={column.columnKey} className={column.columnKey}>
-                                    <DisplayValue valueKey={column.columnKey} value={item[column.columnKey]} isEditing={isEditing} filteredData={filteredData} />
+                                <TableCell onClick={() => { column.columnKey === "id" && setIsOpen(true); column.columnKey === "id" && setCurrentData(item);}} key={column.columnKey} className={column.columnKey}>
+                                    <DisplayValue valueKey={column.columnKey} value={item[column.columnKey]} isEditing={isEditing}/>
                                 </TableCell>
                             ))}
                         </TableRow>
@@ -71,6 +76,26 @@ function POTable({columns, items}){
                 </TableBody>
             </Table>
         </div>
-    )
+    );
+}
+
+
+POTable.propTypes = {
+    columns: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string,
+        columnKey: PropTypes.string
+    })),
+    
+    items: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number,
+        supplier_id: PropTypes.number,
+        main_article_group: PropTypes.number,
+        material_leadtime: PropTypes.number,
+        production_leadtime: PropTypes.number,
+        qc_passing: PropTypes.number,
+        transport_time_fh: PropTypes.number,
+        transport_time_hh: PropTypes.number,
+        transport_time_hl: PropTypes.number
+    }))
 }
 export default memo(POTable);

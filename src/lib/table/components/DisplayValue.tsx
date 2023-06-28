@@ -1,7 +1,9 @@
 import { Input, Link } from '@fluentui/react-components';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
 
-const DisplayValue = ({valueKey, value, isEditing, filteredData}) => {
+const DisplayValue = ({valueKey, value, isEditing}) => {
 
     return (
         <div className="ValueDiv">
@@ -12,6 +14,12 @@ const DisplayValue = ({valueKey, value, isEditing, filteredData}) => {
             )}
         </div>
     )
+}
+
+DisplayValue.propTypes = {
+    valueKey: PropTypes.string,
+    value: PropTypes.number,
+    isEditing: PropTypes.bool,
 }
 
 export default DisplayValue;
