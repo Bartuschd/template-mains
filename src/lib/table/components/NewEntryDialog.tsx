@@ -30,10 +30,10 @@ const NewEntryDialog = ({open, setIsOpen, values}) => {
                                 {(Object.keys(values).length !== 0 ? "Editieren" : "Neuer Eintrag")}
                             </DialogTitle>
                             <DialogContent className={styles.content}>
-                                <Label required htmlFor={"id-input"}>
+                                {/* <Label required htmlFor={"id-input"}>
                                     ID
                                 </Label>
-                                <Input disabled={true} id={"id-input"} defaultValue={values.id}/>
+                                <Input disabled={true} id={"id-input"} defaultValue={values.id}/> */}
 
                                 <Label required htmlFor={"supplier_id-input"}>
                                     Supplier ID
