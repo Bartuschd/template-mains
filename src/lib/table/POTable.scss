@@ -9,8 +9,12 @@
     display: flex !important;
 }
 
-.SaveDiv, .BulkEditDiv, .NewEntryDiv {
-    margin-right: 5px !important;
+.SaveDiv, .BulkEditDiv, .NewEntryDiv, .SearchbarDiv {
+    margin-right: 10px !important;
+}
+
+.fui-Combobox {
+    width: 10px;
 }
 
 .ValueDivValue {

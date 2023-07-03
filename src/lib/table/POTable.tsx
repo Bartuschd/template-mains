@@ -60,6 +60,32 @@ function POTable({columns, /* requestClient: { oauthGet, oauthPost } */}){
         console.log(mergeArray(output));
     }
 
+    const handleSelect = (selection) => {
+        switch(selection) {
+            case "1 - Calamar":
+                console.log({id: 1});
+            break;
+            case "3 - Camel Active Women":
+                console.log({id: 3});
+            break;
+            case "4 - Camel Active Men":
+                console.log({id: 4});
+            break;
+            case "5 - Freestyle":
+                console.log({id: 5});
+            break;
+            case "6 - Hattric":
+                console.log({id: 6});
+            break;
+            case "7 - Outlet Stores":
+                console.log({id: 7});
+            break;
+            case "9 - BSL":
+                console.log({id: 1});
+            break;
+        }
+    }
+
     const mergeArray = (output) => {
         const mergedObjects = {};
         output.forEach(item => {    
@@ -102,6 +128,7 @@ function POTable({columns, /* requestClient: { oauthGet, oauthPost } */}){
                 searchTerm={searchTerm} 
                 handleInputChange={handleInputChange} 
                 setCurrentData={setCurrentData}
+                handleSelect={handleSelect}
             />
             <Table arial-label="PO Table" id={"table"}>
                 <TableHeader className="TableHeader">

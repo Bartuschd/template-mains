@@ -1,9 +1,17 @@
-import {Input, Button, TooltipProps} from "@fluentui/react-components";
+import {Input, Button, Dropdown, Option} from "@fluentui/react-components";
 import {Add16Filled} from '@fluentui/react-icons'
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { useState } from "react";
 
-const HeaderMenu = ({setIsOpen, isEditing, handleSaveClick, handleEditClick, searchTerm, handleInputChange, setCurrentData}) => {
+const options = ["All",  "1 - Calamar", "3 - Camel Active Women", "4 - Camel Active Men", "5 - Freestyle", "6 - Hattric", "7 - Outlet Stores", "9 - BSL"]
+
+const HeaderMenu = ({setIsOpen, isEditing, handleSaveClick, handleEditClick, searchTerm, handleInputChange, setCurrentData, handleSelect}) => {
+
+    
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    console.log(selectedOption)
     return (
         <div className="HeaderMenuDiv">
             <div className="NewEntryDiv">
@@ -11,7 +19,7 @@ const HeaderMenu = ({setIsOpen, isEditing, handleSaveClick, handleEditClick, sea
             </div>
             <div className="BulkEditDiv">
                 <Button onClick={isEditing ? handleSaveClick : handleEditClick}>
-                {isEditing ? "Speichern" : "Editieren"}
+                    {isEditing ? "Speichern" : "Editieren"}
                 </Button>
             </div>
             <div className="SearchbarDiv">
@@ -21,6 +29,21 @@ const HeaderMenu = ({setIsOpen, isEditing, handleSaveClick, handleEditClick, sea
                 value={searchTerm}
                 onChange={handleInputChange}
             />
+            </div>
+            <div className="ComboboxDiv">
+                <Dropdown placeholder="Kollektion auswählen..." onOptionSelect={(e, {optionValue}) => {
+                    handleSelect(optionValue);
+                }}
+                    selectedOptions={[selectedOption]}
+                >
+                    {options.map((option) => {
+                        return (
+                            <Option key={option}>
+                                {option}
+                            </Option>
+                        )
+                    })}
+                </Dropdown>
             </div>
         </div>
     )
@@ -33,6 +56,7 @@ HeaderMenu.propTypes = {
     handleEditClick: PropTypes.func,
     searchTerm: PropTypes.string,
     handleInputChange: PropTypes.func,
-    setCurrentData: PropTypes.func
+    setCurrentData: PropTypes.func,
+    handleSelect: PropTypes.func,
 }
 export default HeaderMenu;
