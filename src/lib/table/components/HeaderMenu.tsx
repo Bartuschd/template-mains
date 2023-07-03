@@ -11,7 +11,6 @@ const HeaderMenu = ({setIsOpen, isEditing, handleSaveClick, handleEditClick, sea
     
     const [selectedOption, setSelectedOption] = useState(null);
 
-    console.log(selectedOption)
     return (
         <div className="HeaderMenuDiv">
             <div className="NewEntryDiv">
