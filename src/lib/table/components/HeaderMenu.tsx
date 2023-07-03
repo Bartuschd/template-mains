@@ -1,4 +1,4 @@
-import {Input, Button} from "@fluentui/react-components";
+import {Input, Button, TooltipProps} from "@fluentui/react-components";
 import {Add16Filled} from '@fluentui/react-icons'
 import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ const HeaderMenu = ({setIsOpen, isEditing, handleSaveClick, handleEditClick, sea
             </div>
             <div className="BulkEditDiv">
                 <Button onClick={isEditing ? handleSaveClick : handleEditClick}>
-                {isEditing ? "Save" : "Bulk Edit"}
+                {isEditing ? "Speichern" : "Editieren"}
                 </Button>
             </div>
             <div className="SearchbarDiv">

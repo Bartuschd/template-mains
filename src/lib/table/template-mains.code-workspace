@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"name": "po_planning",
+			"path": "../../../../../po_planning"
+		}
+	],
+	"settings": {}
+}

@@ -16,7 +16,7 @@ const DisplayValue = ({valueKey, value, isEditing, itemId, pushToArray, setChang
             {isEditing ? (
                 <Input disabled={valueKey == "id"} type="number" onChange={handleChange} defaultValue={(value == null) ? "" : value} className="TableCellInput"></Input>
                 ) : (
-                <div className="ValueDivValue">{valueKey == "id" ? (<Link>{value}</Link>) : (value)}</div>
+                <div className="ValueDivValue">{valueKey == "supplier_id" ? (<Link>{value}</Link>) : (value)}</div>
             )}
         </div>
     )

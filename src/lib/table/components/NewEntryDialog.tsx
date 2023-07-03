@@ -17,17 +17,17 @@ const NewEntryDialog = ({open, setIsOpen, values}) => {
         alert("form submitted!");
     };
 
-    
     const styles = useStyles();
 
     return (
+        
         <div className="NewEntryDialogDiv">
             <Dialog modalType="modal" open={open} onOpenChange={console.log}>
                 <DialogSurface aria-describedby={undefined}>
                     <form onSubmit={handleSubmit}>
                         <DialogBody>
                             <DialogTitle>
-                                New Entry
+                                {(Object.keys(values).length !== 0 ? "Editieren" : "Neuer Eintrag")}
                             </DialogTitle>
                             <DialogContent className={styles.content}>
                                 <Label required htmlFor={"id-input"}>
@@ -44,6 +44,11 @@ const NewEntryDialog = ({open, setIsOpen, values}) => {
                                     Main Article Group
                                 </Label>
                                 <Input required type="number" id={"main_article_group-input"} defaultValue={values.main_article_group}/>
+
+                                <Label required htmlFor={"client_id-input"}>
+                                    Client ID
+                                </Label>
+                                <Input required type="number" id={"client_id-input"} defaultValue={values.client_id}/>
 
                                 <Label required htmlFor={"material_leadtime-input"}>
                                     Material Leadtime
