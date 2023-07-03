@@ -115,10 +115,10 @@ function POTable({columns, /* requestClient: { oauthGet, oauthPost } */}){
                 </TableHeader>
                 <TableBody>
                     {(searchTerm ? filteredData : items).map((item) => (
-                        <TableRow onDoubleClick={() => {setIsOpen(true); setCurrentData(item);} } key={item.id}>
+                        <TableRow onDoubleClick={() => {isEditing === false && setIsOpen(true); setCurrentData(item);} } key={item.id}>
                             {columns.map((column) => (
-                                <TableCell onClick={() => { column.columnKey === "supplier_id" && setIsOpen(true); column.columnKey === "supplier_id" && setCurrentData(item);}} key={column.columnKey} className={column.columnKey}>
-                                    <DisplayValue valueKey={column.columnKey} value={item[column.columnKey]} isEditing={isEditing} itemId={item.id} pushToArray={pushToArray} setChangedData={setChangedData}/>
+                                <TableCell onClick={() => {isEditing === false && column.columnKey === "supplier_id" && setIsOpen(true); column.columnKey === "supplier_id" && setCurrentData(item);}} key={column.columnKey} className={column.columnKey}>
+                                    <DisplayValue valueKey={column.columnKey} value={item[column.columnKey]} isEditing={isEditing} itemId={item.id} pushToArray={pushToArray}/>
                                 </TableCell>
                             ))}
                         </TableRow>

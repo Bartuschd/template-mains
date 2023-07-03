@@ -83,10 +83,10 @@ const NewEntryDialog = ({open, setIsOpen, values}) => {
 
                             <DialogActions>
                                 <Button onClick={() => setIsOpen(false)} appearance="secondary">
-                                    Close 
+                                    Schließen
                                 </Button>
                                 <Button type="submit" appearance="primary">
-                                    Submit
+                                    Speichern
                                 </Button>
                             </DialogActions>
                         </DialogBody>

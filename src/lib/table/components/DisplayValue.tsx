@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 
-const DisplayValue = ({valueKey, value, isEditing, itemId, pushToArray, setChangedData}) => {
+const DisplayValue = ({valueKey, value, isEditing, itemId, pushToArray}) => {
 
     const handleChange = (event) => {
         pushToArray({id: itemId, value: event.target.value, key: valueKey})
@@ -14,7 +14,7 @@ const DisplayValue = ({valueKey, value, isEditing, itemId, pushToArray, setChang
     return (
         <div className="ValueDiv">
             {isEditing ? (
-                <Input disabled={valueKey == "id"} type="number" onChange={handleChange} defaultValue={(value == null) ? "" : value} className="TableCellInput"></Input>
+                <Input type="number" onChange={handleChange} defaultValue={(value == null) ? "" : value} className="TableCellInput"></Input>
                 ) : (
                 <div className="ValueDivValue">{valueKey == "supplier_id" ? (<Link>{value}</Link>) : (value)}</div>
             )}
@@ -27,7 +27,6 @@ DisplayValue.propTypes = {
     value: PropTypes.number,
     isEditing: PropTypes.bool,
     itemId: PropTypes.number,
-    setChangedData: PropTypes.func,
     pushToArray: PropTypes.func
 }
 
